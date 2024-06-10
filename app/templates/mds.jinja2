@@ -1,0 +1,34 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+{% from 'row.jinja2' import new_row %}
+<div class="content">
+  {% if hundreds %}
+    {{ new_row('hundred', hundreds) }}
+  {% endif %}
+  {% if tens %}
+    {{ new_row('ten', tens) }}
+  {% endif %}
+  {% if ones %}
+    {{ new_row('one', ones) }}
+  {% endif %}
+  {% if tenths %}
+    {{ new_row('tenth', tenths) }}
+  {% endif %}
+  {% if hundredths %}
+    {{ new_row('hundredth', hundredths) }}
+  {% endif %}
+</div>
+<div class="content mds">
+  <label class="label">MDS Number </label><input type="text" id="mds_number" maxlength="6" oninput="activate_number(this);">
+</div>
+<script>
+  var last;
+  for (id of {{ active|tojson|safe }} ) {
+    document.getElementById(id).classList.add('active');
+    last = id;
+  }
+  document.getElementById('mds_number').value = last;
+
+</script>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% macro new_row(level, items)%}
+<div class="content">
+  {% for item in items %}
+    <a href="/mds/{{item.mds_number}}">
+    <div class="card {{level}}" id="{{item.mds_number}}">
+      <div class="number">
+        {{item.mds_number}}
+      </div>
+      <div class="catagory">
+        {{item.mds_name}}
+      </div>
+    </div>
+    </a>
+  {% endfor %}
+</div><br>
+{% endmacro %}

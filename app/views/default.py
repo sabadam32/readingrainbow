@@ -1,18 +1,21 @@
 from pyramid.view import view_config
 from pyramid.response import Response
 from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy.sql.expression import func
 
 from .. import models
 
 
-@view_config(route_name='home', renderer='app:templates/mytemplate.jinja2')
+@view_config(route_name='home', renderer='app:templates/mds.jinja2')
 def my_view(request):
     data = {}
     try:
         query = request.dbsession.query(models.Category)
         data['hundreds'] = query.filter(models.Category.mds_number.like('_')).all()
-        data['project'] = 'Reading Rainbow'
+        data['tens'] = query.filter(models.Category.mds_number.like('2_')).all()
+        data['ones'] = query.filter(models.Category.mds_number.like('25_')).all()
+        data['tenths'] = query.filter(models.Category.mds_number.like('258._')).all()
+        data['hundredths'] = query.filter(models.Category.mds_number.like('258.1_')).all()
+        data['active'] = ["2", "25", "258", "258.1", "258.14"]
     except SQLAlchemyError:
         return Response(db_err_msg, content_type='text/plain', status='500')
     return data

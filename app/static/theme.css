@@ -2,73 +2,76 @@
 body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  font-size: 14pt;
+  font-size: .95em;
   color: black;
   background: whitesmoke;
   margin: 0;
 }
 
-.catagory {
-  margin: 5px;
-  padding: 5px;
-  font-weight: 600;
-  border-radius: 5px;
-  text-align: center;
-  text-wrap: wrap;
+a, a:visited, a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
-.hundred {
-  background-color: crimson;
-  color: whitesmoke;
+.content {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  border-radius: 0 0 10px 10px; 
+  height: 150px;
+  width: 170px;
+  font-weight: 600;
 }
 
 .number {
   padding: 4px 8px;
-  text-align: justify;
+  text-align: right;
 }
 
-.ten {
-  background-color: darkorange;
-  color: black;
-}
-
-.one {
-  background-color: gold;
-  color: black
-}
-
-.tenth {
-  background-color: limegreen;
-  color: black
-}
-
-.hundredth {
-  background-color: royalblue;
-  color: bisque
-}
-
-.card {
-  border: 1px solid;
-  border-radius: 0 0 10px 10px;
-  width: 150px;
-  height: 130px;
+.catagory {
+  margin: 0 1px 0 1px;
   font-weight: 600;
-}
-.hundred-border {
-  border: 1px solid crimson;
-}
-
-.card:hover {
-  color: crimson;
-}
-
-.content {
-  display: inline-block;
-}
-
-.daddy {
-  justify-content: center;
+  text-align: center;
+  overflow: hidden;
   display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+
+.mds {
+  background-color: indigo;
+  color: whitesmoke;
+}
+
+.hundred { border: 1px solid crimson; }
+.ten { border: 1px solid darkorange; }
+.one { border: 1px solid gold; }
+.tenth { border: 1px solid limegreen; }
+.hundredth { border: 1px solid royalblue; }
+
+.card:hover.hundred, .card.hundred.active, .hundred .number { color: whitesmoke; background-color: crimson;}
+.card:hover.ten, .card.ten.active, .ten .number { background-color: darkorange; } 
+.card:hover.one, .card.one.active, .one .number { background-color: gold; }
+.card:hover.tenth, .card.tenth.active, .tenth .number { background-color: limegreen; }
+.card:hover.hundredth, .card.hundredth.active, .hundredth .number { color: whitesmoke; background-color: royalblue; }
+
+input{
+  font-size: 3em;
+  margin: 10px;
+  max-width: 6ch;
+  border-radius: 10px;
+  border: 2px solid indigo;
+  color: indigo;
+  padding: 5px;
+  outline: 0;
+}
+
+label {
+  font-size: 3em;
+  font-weight: 300;
+  align-self: center;
 }
