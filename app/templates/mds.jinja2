@@ -28,7 +28,15 @@
     document.getElementById(id).classList.add('active');
     last = id;
   }
-  document.getElementById('mds_number').value = last;
+  number_elm = document.getElementById('mds_number');
+  number_elm.value = last;
+  number_elm.focus();
+  number_elm.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      window.location = this.value;
+    }
+  })
 
 </script>
 {% endblock content %}
