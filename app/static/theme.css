@@ -59,19 +59,52 @@ a, a:visited, a:active {
 .card:hover.tenth, .card.tenth.active, .tenth .number { background-color: limegreen; }
 .card:hover.hundredth, .card.hundredth.active, .hundredth .number { color: whitesmoke; background-color: royalblue; }
 
-input{
+.input{
   font-size: 3em;
   margin: 10px;
   max-width: 6ch;
   border-radius: 10px;
-  border: 2px solid indigo;
+  border: none;
   color: indigo;
   padding: 5px;
   outline: 0;
 }
 
-label {
+.label {
   font-size: 3em;
   font-weight: 300;
   align-self: center;
+}
+
+.edit_button {
+  background-color: whitesmoke;
+  color: indigo;
+  font-size: 2em;
+  margin: 20px;
+  border: none;
+  max-width: 6ch;
+  border-radius: 10px;
+  padding: 0px 10px 0px 10px;
+  cursor: pointer;
+}
+
+.edit {
+  color: indigo;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+.header {
+  font-weight: 600;
+  font-size: 2em;
+  display: flexbox;
+}
+
+.edit-form {
+  font-size: 1em;
+  color: indigo;
+  border-radius: 5px;
+  border: 1px solid indigo;
+  font-weight: 300;
+  outline: 0;
 }

@@ -1,10 +1,15 @@
+from pyramid.httpexceptions import HTTPFound
 from pyramid.view import view_config
 from pyramid.response import Response
 from sqlalchemy.exc import SQLAlchemyError
-
 from app.models.mymodel import Category
-
 from .. import models
+
+
+@view_config(route_name='mds_root')
+def root(request):
+    return HTTPFound(request.route_url('mds', number="0"))
+
 
 @view_config(route_name='mds', renderer='app:templates/mds.jinja2')
 def my_view(request):
@@ -29,6 +34,7 @@ def my_view(request):
                     ).order_by(Category.mds_number).all()
             else:
                 data[levels[len(res)]] = query.filter(models.Category.mds_number.like(f'{res}_')).all()
+    data['info'] = query.filter(models.Category.mds_number == number).one()
     return data
 
 def get_row(session, number):
@@ -54,3 +60,15 @@ def get_rows(number):
         data['active'].append(tmp_num)
 
     return data
+
+
+@view_config(route_name='mds_update')
+def update_view(request):
+    number_in = request.matchdict['number']
+    name = request.matchdict['name']
+    if name == "null":
+        name = None
+    record = request.dbsession.query(Category).filter(Category.mds_number == number_in).first()
+    record.assigned_name = name
+    request.dbsession.flush()
+    return HTTPFound(request.route_url('mds', number=number_in))

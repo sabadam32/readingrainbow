@@ -7,7 +7,11 @@
         {{item.mds_number}}
       </div>
       <div class="catagory">
+        {% if item.assigned_name %}
+        {{item.assigned_name}}
+        {% else %}
         {{item.mds_name}}
+        {% endif %}
       </div>
     </div>
     </a>
