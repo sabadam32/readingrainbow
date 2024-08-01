@@ -54,11 +54,12 @@
       pattern = patterns[this.value.length];
       if (this.value.match(pattern)) {
         if (this.value.length == 4) {
-          window.location = this.value.substring(0, this.value.length - 1);
+          url = this.value.substring(0, this.value.length - 1);
         }
         else {
-          window.location = this.value;
+          url = this.value;
         }
+        window.location = url
       }
       else {
         alert('MDS Number is not formatted correctly.  XXX.XX');
@@ -74,6 +75,9 @@
   edit_btn.addEventListener("click", function(event) {
     event.preventDefault();
     document.getElementById('edit_info').style.display = "block";
+    elm = document.getElementById('assigned_name');
+    elm.focus();
+    elm.select();
   })
 
   // Setup Save Button
@@ -84,6 +88,18 @@
     name = document.getElementById('assigned_name').value;
     if (name === "" ){name="null";}
     window.location="/mds/"+number+"/"+name;
+  })
+
+  // Save when Enter is pressed
+  assigned_name = document.getElementById('assigned_name');
+  assigned_name.addEventListener("keypress", function(event){
+    if (event.key === "Enter" ) {
+      event.preventDefault();
+      number = document.getElementById('mds_number').value;
+      name = this.value;
+      if (name === "" ){name="null";}
+      window.location="/mds/"+number+"/"+name;
+    }
   })
 </script>
 {% endblock content %}
