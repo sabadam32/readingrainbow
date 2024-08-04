@@ -1,3 +1,3 @@
-call python -m webbrowser -n http://localhost
-call pserve development.ini
+python -m webbrowser -n http://localhost
+pserve development.ini
 
